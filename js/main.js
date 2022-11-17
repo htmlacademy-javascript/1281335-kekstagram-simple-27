@@ -75,5 +75,5 @@ const createPhotoDescr = (index) => ({
   comments: COMMENTS[index]
 });
 
-const similarPhotoDescr = Array.from({length: SIMILAR_POST_COUNT}, (v, k) => createPhotoDescr(k));
-console.log(similarPhotoDescr);
+const similarPhotoDescr = () => Array.from({length: SIMILAR_POST_COUNT}, (v, k) => createPhotoDescr(k));
+similarPhotoDescr();
