@@ -63,4 +63,4 @@ const createPhotoDescr = (index) => ({
 const similarPhotoDescr = () => Array.from({length: SIMILAR_POST_COUNT}, (v, k) => createPhotoDescr(k));
 similarPhotoDescr();
 
-export {createPhotoDescr};
+export {similarPhotoDescr};
