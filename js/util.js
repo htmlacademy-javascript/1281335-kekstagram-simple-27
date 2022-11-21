@@ -14,4 +14,6 @@ getRandomNumber(-5.5, 10.7);
 const getStringLength = (string, maxLength) => string.length <= maxLength;
 getStringLength('', '');
 
-export {getRandomNumber};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export {getRandomNumber, isEscapeKey};
