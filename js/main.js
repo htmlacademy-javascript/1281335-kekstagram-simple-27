@@ -1,2 +1,5 @@
-import './data.js';
-import './miniature.js';
+import {generatePhotos} from './data.js';
+import {renderPhotos} from './miniature.js';
+
+const otherUserPhoto = generatePhotos();
+renderPhotos(otherUserPhoto);
