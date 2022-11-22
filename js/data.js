@@ -60,7 +60,6 @@ const createPhotoDescr = (index) => ({
   comments: COMMENTS[index]
 });
 
-const similarPhotoDescr = () => Array.from({length: SIMILAR_POST_COUNT}, (v, k) => createPhotoDescr(k));
-similarPhotoDescr();
+const generatePhotos = () => Array.from({length: SIMILAR_POST_COUNT}, (v, k) => createPhotoDescr(k));
 
-export {similarPhotoDescr};
+export {generatePhotos};
