@@ -1,4 +1,5 @@
 import {isEscapeKey} from './util.js';
+import {resetScale} from './scale.js';
 import './validation.js';
 
 const bodyElement = document.body;
@@ -27,5 +28,6 @@ function closeUserModal () {
   userModalElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
   form.reset();
+  resetScale();
   document.removeEventListener('keydown', onPopupEscKeydown);
 }
