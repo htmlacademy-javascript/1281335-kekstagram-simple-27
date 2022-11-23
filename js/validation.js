@@ -1,6 +1,6 @@
-import {showAlert} from './util.js';
 import {sendData} from './api.js';
-import {blockSubmitButton, unblockSubmitButton} from './popup.js';
+import {blockSubmitButton, closeUserModal, unblockSubmitButton} from './popup.js';
+import {showMessage} from './message.js';
 
 const formElement = document.querySelector('.img-upload__form');
 const pristine = new Pristine(formElement, {
@@ -9,21 +9,21 @@ const pristine = new Pristine(formElement, {
   errorTextClass: 'img-upload__text__error-text',
 });
 
-const setUserFormSubmit = (onSuccess) => {
+const setUserFormSubmit = () => {
   formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const isValid = pristine.validate();
     if (isValid) {
-      // formElement.submit();
       blockSubmitButton();
       sendData(
         () => {
-          onSuccess();
           unblockSubmitButton();
+          closeUserModal();
+          showMessage('success');
         },
         () => {
-          showAlert('Не удалось отправить форму. Попробуйте ещё раз');
           unblockSubmitButton();
+          showMessage('error');
         },
         new FormData(evt.target),
       );
