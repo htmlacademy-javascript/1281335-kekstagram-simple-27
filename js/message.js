@@ -21,7 +21,7 @@ const onErrorMessageEscKeydown = (evt) => {
   }
 };
 
-const onClickOverSuccess = (evt) => {
+const onClickOutSuccess = (evt) => {
   evt.preventDefault();
   const successButtonElement = document.querySelector('.success__button');
   const successInnerElement = document.querySelector('.success__inner');
@@ -30,7 +30,7 @@ const onClickOverSuccess = (evt) => {
   }
 };
 
-const onClickOverError = (evt) => {
+const onClickOutError = (evt) => {
   evt.preventDefault();
   const successInnerElement = document.querySelector('.success__inner');
   const errorButtonElement = document.querySelector('.error__button');
@@ -45,14 +45,14 @@ function showMessage(type) {
       messageFragment.append(successMessageElement);
       bodyElement.appendChild(messageFragment);
       document.addEventListener('keydown', onSuccessMessageEscKeydown);
-      document.addEventListener('click', onClickOverSuccess);
+      document.addEventListener('click', onClickOutSuccess);
       break;
     }
     case 'error': {
       messageFragment.append(errorMessageElement);
       bodyElement.appendChild(messageFragment);
       document.addEventListener('keydown', onErrorMessageEscKeydown);
-      document.addEventListener('click', onClickOverError);
+      document.addEventListener('click', onClickOutError);
       break;
     }
   }
@@ -62,13 +62,13 @@ function hideMessage(type) {
   switch (type) {
     case 'success': {
       document.removeEventListener('keydown', onSuccessMessageEscKeydown);
-      document.removeEventListener('click', onClickOverSuccess);
+      document.removeEventListener('click', onClickOutSuccess);
       bodyElement.querySelector('.success').remove();
       break;
     }
     case 'error': {
       document.removeEventListener('keydown', onErrorMessageEscKeydown);
-      document.removeEventListener('click', onClickOverError);
+      document.removeEventListener('click', onClickOutError);
       bodyElement.querySelector('.error').remove();
       break;
     }
