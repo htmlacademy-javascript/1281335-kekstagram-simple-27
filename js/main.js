@@ -1,6 +1,11 @@
-import {generatePhotos} from './data.js';
 import {renderPhotos} from './miniature.js';
-import './popup.js';
+import {setUserFormSubmit} from './validation.js';
+import {getData} from './api.js';
 
-const otherUserPhoto = generatePhotos();
-renderPhotos(otherUserPhoto);
+const SIMILAR_POST_COUNT = 25;
+
+getData((posts) => {
+  renderPhotos(posts.slice(0, SIMILAR_POST_COUNT));
+});
+
+setUserFormSubmit();
