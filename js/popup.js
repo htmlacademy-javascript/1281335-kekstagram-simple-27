@@ -1,6 +1,8 @@
 import {isEscapeKey} from './util.js';
 import {resetScale} from './scale.js';
 import {resetEffects} from './effect.js';
+import {hideMessage} from './message.js';
+import {pristine} from './validation.js';
 
 const bodyElement = document.body;
 const userModalElement = document.querySelector('.img-upload__overlay');
@@ -15,6 +17,16 @@ userModalCloseElement.addEventListener('click', closeUserModal);
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
+    const errorMessage = document.querySelector('.error');
+    if (errorMessage) {
+      hideMessage('error');
+      return;
+    }
+    const successMessage = document.querySelector('.success');
+    if (successMessage) {
+      hideMessage('success');
+      return;
+    }
     closeUserModal();
   }
 };
@@ -26,6 +38,7 @@ function openUserModal () {
 }
 
 function closeUserModal () {
+  pristine.reset();
   userModalElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
   form.reset();
@@ -45,4 +58,4 @@ const unblockSubmitButton = () => {
 };
 
 
-export {closeUserModal, blockSubmitButton, unblockSubmitButton};
+export {closeUserModal, blockSubmitButton, unblockSubmitButton, onPopupEscKeydown};
