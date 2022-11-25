@@ -1,7 +1,12 @@
 import {showAlert} from './util.js';
 
+const API = {
+  BASE: 'https://27.javascript.pages.academy/kekstagram-simple',
+  DATA: 'https://27.javascript.pages.academy/kekstagram-simple/data'
+};
+
 const getData = (onSuccess) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
+  fetch(API.DATA)
     .then((response) => response.json())
     .then((posts) => {
       onSuccess(posts);
@@ -11,7 +16,7 @@ const getData = (onSuccess) => {
 
 const sendData = (onSuccess, onFail, body) => {
   fetch(
-    'https://27.javascript.pages.academy/kekstagram-simple',
+    API.BASE,
     {
       method: 'POST',
       body,
